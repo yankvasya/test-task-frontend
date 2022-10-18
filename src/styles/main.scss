@@ -1,1 +1,14 @@
 @import "reseter.css/src/scss/minireseter";
+
+html, body, #app, .wrapper {
+  height: 100%;
+}
+
+#app {
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
