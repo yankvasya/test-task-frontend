@@ -14,7 +14,7 @@
 <script setup>
 import CustomList from "./components/CustomList.vue";
 import CustomSelected from "./components/CustomSelected.vue";
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 
 const left = [
   {
@@ -88,9 +88,10 @@ const right = [
 const limitSelectedItems = 6;
 const selectedItems = ref([]);
 const addSelectedItems = (value) => {
-  if (selectedItems.value.length < limitSelectedItems) {
-    selectedItems.value.push(value);
-  }
+  // если нужно запретить добавление элементов при переполнении лимита
+  // if (selectedItems.value.length < limitSelectedItems) {
+  selectedItems.value.push(value);
+  // }
 };
 const changeSelectedItems = (value) => {
   // FIXME: реализовать удалению по клику на определенный элементы
