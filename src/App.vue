@@ -88,14 +88,21 @@ const right = [
 const limitSelectedItems = 6;
 const selectedItems = ref([]);
 const addSelectedItems = (value) => {
-  // если нужно запретить добавление элементов при переполнении лимита
-  // if (selectedItems.value.length < limitSelectedItems) {
+  if (selectedItems.value.length >= limitSelectedItems) {
+    // удаление первого товара
+    selectedItems.value.shift();
+  }
   selectedItems.value.push(value);
+
+  // если нужно запретить добавление элементов при переполнении лимита, заменить на:
+  // if (selectedItems.value.length < limitSelectedItems) {
+  // selectedItems.value.push(value);
   // }
 };
 const changeSelectedItems = (value) => {
   // FIXME: реализовать удалению по клику на определенный элементы
   // filter, slice польностью ломают возможно работы с массивом
+  // удаление последнего товара
   selectedItems.value.pop();
 };
 
