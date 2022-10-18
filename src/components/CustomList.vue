@@ -28,6 +28,7 @@ const { list, maxLimit } = defineProps({
 
 const emit = defineEmits(["update:element"]);
 
+// slicedArray, можно использовать для принудительного изменения длины массива
 const slicedArray = computed(() => list.slice(-6));
 
 const updateElement = (e) => emit("update:element", e);
