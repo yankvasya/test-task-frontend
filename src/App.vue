@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper">
-    <CustomList
-      :list="selectedItems"
-      :maxLimit="limitSelectedItems"
-      @update:element="changeSelectedItems"
-    />
+    <CustomList :list="selectedItems" @update:element="changeSelectedItems" />
     <CustomSelected :item="selectedItem" @delete:element="deleteSelectedItem" />
     <CustomList :list="left" @update:element="addSelectedItems" />
     <CustomList :list="right" @update:element="changeSelectedItem" />
@@ -90,13 +86,13 @@ const selectedItems = ref([]);
 const addSelectedItems = (value) => {
   if (selectedItems.value.length >= limitSelectedItems) {
     // удаление первого товара
-    selectedItems.value.shift();
+    // selectedItems.value.shift();
   }
   selectedItems.value.push(value);
 
   // если нужно запретить добавление элементов при переполнении лимита, заменить на:
   // if (selectedItems.value.length < limitSelectedItems) {
-  // selectedItems.value.push(value);
+  selectedItems.value.push(value);
   // }
 };
 const changeSelectedItems = (value) => {

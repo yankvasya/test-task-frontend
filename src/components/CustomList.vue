@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <ul class="list">
-      <li v-for="e of slicedArray" :key="e.key" class="list__element">
+      <li v-for="e of currentArray" :key="e.key" class="list__element">
         <CustomElement :element="e" @update:element="updateElement" />
       </li>
     </ul>
@@ -29,7 +29,12 @@ const { list, maxLimit } = defineProps({
 const emit = defineEmits(["update:element"]);
 
 // slicedArray, можно использовать для принудительного изменения длины массива
-const slicedArray = computed(() => list.slice(-6));
+const slicedArray = computed(() => list.slice(-1 * maxLimit));
+
+const currentArray = maxLimit ? slicedArray : list;
+
+console.log(currentArray);
+console.log(maxLimit);
 
 const updateElement = (e) => emit("update:element", e);
 </script>
